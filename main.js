@@ -24,34 +24,69 @@ function toggleMenu() {
   icon.classList.toggle("open");
 }
 
-document
-  .getElementById("contactForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the default form submission
 
-    // Add your own logic here for additional form validation if needed
 
-    // Send the form data to Formspree
-    fetch("https://formspree.io/phamphemulalo@gmail.com", {
-      method: "POST",
-      body: new FormData(this),
-      headers: {
-        Accept: "application/json",
-      },
+
+
+document.querySelector("#contactForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Add your own logic here for additional form validation if needed
+
+  // Send the form data to Formspree
+  fetch("https://formspree.io/phamphemulalo@gmail.com", {
+    method: "POST",
+    body: new FormData(this), // 'this' refers to the form element
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Handle the response from Formspree
+      if (data.success) {
+        // Show a success message
+        alert("Email sent successfully!");
+      } else {
+        // Show an error message
+        alert("Failed to send email. Please try again later.");
+      }
     })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response from Formspree
-        if (data.success) {
-          // Show a success message
-          alert("Email sent successfully!");
-        } else {
-          // Show an error message
-          alert("Failed to send email. Please try again later.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("An unexpected error occurred. Please try again later.");
-      });
-  });
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("An unexpected error occurred. Please try again later.");
+    });
+});
+
+
+// document
+//   .getElementById("#contactForm")
+//   .addEventListener("submit", function (event) {
+//     event.preventDefault(); // Prevent the default form submission
+
+//     // Add your own logic here for additional form validation if needed
+
+//     // Send the form data to Formspree
+//     fetch("https://formspree.io/phamphemulalo@gmail.com", {
+//       method: "POST",
+//       body: new FormData(this),
+//       headers: {
+//         Accept: "application/json",
+//       },
+//     })
+//       .then((response) => response.json())
+//       .then((data) => {
+//         // Handle the response from Formspree
+//         if (data.success) {
+//           // Show a success message
+//           alert("Email sent successfully!");
+//         } else {
+//           // Show an error message
+//           alert("Failed to send email. Please try again later.");
+//         }
+//       })
+//       .catch((error) => {
+//         console.error("Error:", error);
+//         alert("An unexpected error occurred. Please try again later.");
+//       });
+//   });
