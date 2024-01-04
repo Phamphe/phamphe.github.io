@@ -9,6 +9,8 @@
 
     .home{
         height: 60vh;
+        margin-bottom: 10%;
+      
     }
 
     .home-sci{
@@ -25,9 +27,7 @@
         margin-left: 50%;
     }
 
-    #hireMe{
-        margin-bottom: 10%;
-    }
+   
 
     .home-img{
         display: none;
@@ -39,9 +39,7 @@
         
     }
 
-    .about-me{
-        margin-top:5%;
-    }
+   
 
     .sub-title{
         font-size: 40px;
